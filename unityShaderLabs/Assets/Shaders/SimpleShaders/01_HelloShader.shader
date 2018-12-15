@@ -30,6 +30,7 @@ Shader "unityShaderLabs/SimpleShaders/01_HelloShader"
 
         Pass
         {
+            // CG
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
