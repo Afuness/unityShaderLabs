@@ -7,6 +7,7 @@ Shader "unityShaderLabs/SimpleShaders/04_RepeatUV"
     Properties{
         _Color ("Main Color",Color) = (1,1,1,1)
         _MainTex("Main Texture",2D) = "white" {}
+        _DetailTex("Detail Texture",2D) = "white" {}
     }
     SubShader{
         Tags{
@@ -24,6 +25,7 @@ Shader "unityShaderLabs/SimpleShaders/04_RepeatUV"
 
             sampler2D _MainTex;
             float4 _Color;
+            sampler2D _DetailTex;
 
             struct v2f{
                 float4 pos:POSITION;
@@ -41,7 +43,8 @@ Shader "unityShaderLabs/SimpleShaders/04_RepeatUV"
 
             half4 frag(v2f i):Color{
                 half4 c = tex2D(_MainTex,i.uv) * _Color;
-                return c;
+                half4 d = tex2D(_DetailTex,i.uv);
+                return c*d;
             }
 
             ENDCG
